@@ -5,26 +5,49 @@
 package org.jetbrains.kotlinx.multik_kotlin.linAlg
 
 
-import org.jetbrains.kotlinx.multik.api.*
-import org.jetbrains.kotlinx.multik.api.linalg.Norm
-import org.jetbrains.kotlinx.multik.api.linalg.dot
-import org.jetbrains.kotlinx.multik.api.linalg.norm
-import org.jetbrains.kotlinx.multik.kotlin.linalg.*
-import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlgEx.solve
-import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlgEx.solveC
-import org.jetbrains.kotlinx.multik.ndarray.complex.Complex
-import org.jetbrains.kotlinx.multik.ndarray.complex.ComplexDouble
-import org.jetbrains.kotlinx.multik.ndarray.complex.ComplexFloat
-import org.jetbrains.kotlinx.multik.ndarray.complex.toComplexDouble
-import org.jetbrains.kotlinx.multik.ndarray.data.*
-import org.jetbrains.kotlinx.multik.ndarray.operations.map
-import org.jetbrains.kotlinx.multik.ndarray.operations.minus
-import org.jetbrains.kotlinx.multik.ndarray.operations.plus
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertContentEquals
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
+import org.jetbrains.kotlinx.multik.api.d1array
+import org.jetbrains.kotlinx.multik.api.d2array
+import org.jetbrains.kotlinx.multik.api.linalg.Norm
+import org.jetbrains.kotlinx.multik.api.linalg.dot
+import org.jetbrains.kotlinx.multik.api.linalg.norm
+import org.jetbrains.kotlinx.multik.api.mk
+import org.jetbrains.kotlinx.multik.api.ndarray
+import org.jetbrains.kotlinx.multik.api.zeros
+import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlg
+import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlgEx
+import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlgEx.solve
+import org.jetbrains.kotlinx.multik.kotlin.linalg.KELinAlgEx.solveC
+import org.jetbrains.kotlinx.multik.kotlin.linalg.conjTranspose
+import org.jetbrains.kotlinx.multik.kotlin.linalg.dotMatrixComplex
+import org.jetbrains.kotlinx.multik.kotlin.linalg.gramShmidtComplexDouble
+import org.jetbrains.kotlinx.multik.kotlin.linalg.qrComplexDouble
+import org.jetbrains.kotlinx.multik.kotlin.linalg.schurDecomposition
+import org.jetbrains.kotlinx.multik.kotlin.linalg.upperHessenbergDouble
+import org.jetbrains.kotlinx.multik.ndarray.complex.Complex
+import org.jetbrains.kotlinx.multik.ndarray.complex.ComplexDouble
+import org.jetbrains.kotlinx.multik.ndarray.complex.ComplexFloat
+import org.jetbrains.kotlinx.multik.ndarray.complex.toComplexDouble
+import org.jetbrains.kotlinx.multik.ndarray.data.D1Array
+import org.jetbrains.kotlinx.multik.ndarray.data.D2
+import org.jetbrains.kotlinx.multik.ndarray.data.D2Array
+import org.jetbrains.kotlinx.multik.ndarray.data.DataType
+import org.jetbrains.kotlinx.multik.ndarray.data.Dim2
+import org.jetbrains.kotlinx.multik.ndarray.data.MultiArray
+import org.jetbrains.kotlinx.multik.ndarray.data.NDArray
+import org.jetbrains.kotlinx.multik.ndarray.data.get
+import org.jetbrains.kotlinx.multik.ndarray.data.set
+import org.jetbrains.kotlinx.multik.ndarray.operations.map
+import org.jetbrains.kotlinx.multik.ndarray.operations.minus
+import org.jetbrains.kotlinx.multik.ndarray.operations.plus
 
 class KELinAlgTest {
 
@@ -491,6 +514,16 @@ class KELinAlgTest {
             assertTrue("${trueEigavals[i]} =/= ${testedEigenvals[i]}") { (trueEigavals[i] - testedEigenvals[i]).abs() < precision}
         }
 
+    }
+
+    @Test
+    fun compute_norm_for_vector() {
+        val vector = mk.ndarray(mk[1.1, 0.0, 3.2, 2.3, 5.0])
+
+        assertEquals(6.460650122085238, mk.linalg.norm(vector, Norm.Fro))
+        assertEquals(11.600000000000001, mk.linalg.norm(vector, Norm.Inf))
+        assertEquals(5.0, mk.linalg.norm(vector, Norm.N1))
+        assertEquals(5.0, mk.linalg.norm(vector, Norm.Max))
     }
 }
 

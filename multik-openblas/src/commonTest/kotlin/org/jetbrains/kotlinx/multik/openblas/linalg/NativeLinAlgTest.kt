@@ -324,4 +324,14 @@ class NativeLinAlgTest {
         assertFloatingNumber(7.0, NativeLinAlg.norm(b, Norm.N1))
         assertFloatingNumber(4.0, NativeLinAlg.norm(b, Norm.Max))
     }
+
+    @Test
+    fun `compute norm for vector`() {
+        val vector = mk.ndarray(mk[1.1, 0.0, 3.2, 2.3, 5.0])
+
+        assertEquals(6.460650122085238, mk.linalg.norm(vector, Norm.Fro))
+        assertEquals(11.600000000000001, mk.linalg.norm(vector, Norm.Inf))
+        assertEquals(5.0, mk.linalg.norm(vector, Norm.N1))
+        assertEquals(5.0, mk.linalg.norm(vector, Norm.Max))
+    }
 }
