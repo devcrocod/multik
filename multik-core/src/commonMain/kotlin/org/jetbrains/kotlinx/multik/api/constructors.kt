@@ -210,9 +210,9 @@ public fun <T> Multik.identity(n: Int, dtype: DataType): D2Array<T> {
  * @return [D2Array].
  * @sample samples.NDArrayTest.diagonal
  */
-public inline fun <reified T : Any> Multik.diagonal(vararg elements: T): D2Array<T> {
+public inline fun <reified T : Any> Multik.diagonal(elements: List<T>): D2Array<T> {
     val dtype = DataType.ofKClass(T::class)
-    return diagonal(dtype = dtype, elements = elements)
+    return diagonal(elements = elements, dtype = dtype)
 }
 
 /**
@@ -225,7 +225,7 @@ public inline fun <reified T : Any> Multik.diagonal(vararg elements: T): D2Array
  * @return [D2Array]
  * @sample samples.NDArrayTest.diagonalWithDtype
  */
-public fun <T> Multik.diagonal(dtype: DataType, vararg elements: T): D2Array<T> {
+public fun <T> Multik.diagonal(elements: List<T>, dtype: DataType): D2Array<T> {
     val n = elements.size
     val shape = intArrayOf(n, n)
     val ret = D2Array(initMemoryView<T>(n * n, dtype), shape = shape, dim = D2)

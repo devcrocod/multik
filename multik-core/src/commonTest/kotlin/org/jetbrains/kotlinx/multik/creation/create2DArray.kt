@@ -81,7 +81,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalByteMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { (it + 1).toByte() }.toTypedArray())
+        val a = mk.diagonal(List(n) { (it + 1).toByte() })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -250,7 +250,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalShortMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { (it + 1).toShort() }.toTypedArray())
+        val a = mk.diagonal(List(n) { (it + 1).toShort() })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -422,7 +422,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalIntMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { it + 1 }.toTypedArray())
+        val a = mk.diagonal(List(n) { it + 1 })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -593,7 +593,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalLongMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { it + 1L }.toTypedArray())
+        val a = mk.diagonal(List(n) { it + 1L })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -762,7 +762,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalFloatMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { it + 1f }.toTypedArray())
+        val a = mk.diagonal(List(n) { it + 1f })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -932,7 +932,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalDoubleMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { it + 1.0 }.toTypedArray())
+        val a = mk.diagonal(List(n) { it + 1.0 })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -1105,7 +1105,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalComplexFloatMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { ComplexFloat(it + 1f, it + 1f) }.toTypedArray())
+        val a = mk.diagonal(List(n) { ComplexFloat(it + 1f, it + 1f) })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
@@ -1256,7 +1256,7 @@ class Create2DArrayTests {
     @Test
     fun createDiagonalComplexDoubleMatrix() {
         val n = 7
-        val a = mk.diagonal(*List(n) { ComplexDouble(it + 1.0, it + 1.0) }.toTypedArray())
+        val a = mk.diagonal(List(n) { ComplexDouble(it + 1.0, it + 1.0) })
 
         assertEquals(n * n, a.size)
         for (i in 0 until n) {
