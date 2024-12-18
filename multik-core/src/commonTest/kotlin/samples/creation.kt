@@ -165,6 +165,28 @@ class NDArrayTest {
     }
 
     @Test
+    fun diagonal() {
+        val diagNDArray = mk.diagonal(mk[2, 4, 8])
+        println(diagNDArray)
+        /*
+        [[2, 0, 0],
+        [0, 4, 0],
+        [0, 0, 8]]
+         */
+    }
+
+    @Test
+    fun diagonalWithDtype() {
+        val diagNDArray = mk.diagonal(mk[2, 4, 8], DataType.LongDataType)
+        println(diagNDArray)
+        /*
+        [[2, 0, 0],
+        [0, 4, 0],
+        [0, 0, 8]]
+         */
+    }
+
+    @Test
     fun ndarray1D() {
         val ndarray = mk.ndarray(mk[1, 2, 3])
         println("shape=(${ndarray.shape.joinToString()}), dim=${ndarray.dim.d}") // shape=(3), dim=1

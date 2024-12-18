@@ -73,6 +73,28 @@ class Create2DArrayTests {
     }
 
     /**
+     * Tests the function 'mk.diagonal<Byte>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalByteMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { (it + 1).toByte() })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals((i + 1).toByte(), a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
+                else
+                    assertEquals(0, a[i, j], "Expected non-diagonal elements to be 0")
+            }
+        }
+    }
+
+    /**
      * Creates a two-dimensional array from a list of byte lists
      * and checks if the array's list representation matches the input list.
      */
@@ -213,6 +235,28 @@ class Create2DArrayTests {
             for (j in 0 until n) {
                 if (i == j)
                     assertEquals(1, a[i, j], "Expected diagonal elements to be 1")
+                else
+                    assertEquals(0, a[i, j], "Expected non-diagonal elements to be 0")
+            }
+        }
+    }
+
+    /**
+     * Tests the function 'mk.diagonal<Short>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalShortMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { (it + 1).toShort() })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals((i + 1).toShort(), a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
                 else
                     assertEquals(0, a[i, j], "Expected non-diagonal elements to be 0")
             }
@@ -369,6 +413,28 @@ class Create2DArrayTests {
         }
     }
 
+    /**
+     * Tests the function 'mk.diagonal<Int>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalIntMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { it + 1 })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(i + 1, a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
+                else
+                    assertEquals(0, a[i, j], "Expected non-diagonal elements to be 0")
+            }
+        }
+    }
+
 
     /**
      * Creates a two-dimensional array from a list of integer lists
@@ -512,6 +578,28 @@ class Create2DArrayTests {
             for (j in 0 until n) {
                 if (i == j)
                     assertEquals(1L, a[i, j], "Expected diagonal elements to be 1")
+                else
+                    assertEquals(0L, a[i, j], "Expected non-diagonal elements to be 0")
+            }
+        }
+    }
+
+    /**
+     * Tests the function 'mk.diagonal<Long>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalLongMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { it + 1L })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(i + 1L, a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
                 else
                     assertEquals(0L, a[i, j], "Expected non-diagonal elements to be 0")
             }
@@ -666,6 +754,28 @@ class Create2DArrayTests {
     }
 
     /**
+     * Tests the function 'mk.diagonal<Float>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalFloatMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { it + 1f })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(i + 1f, a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
+                else
+                    assertEquals(0.0f, a[i, j], "Expected non-diagonal elements to be 0.0")
+            }
+        }
+    }
+
+    /**
      * Creates a two-dimensional array from a list of float lists
      * and checks if the array's list representation matches the input list.
      */
@@ -807,6 +917,28 @@ class Create2DArrayTests {
             for (j in 0 until n) {
                 if (i == j)
                     assertEquals(1.0, a[i, j], "Expected diagonal elements to be 1.0")
+                else
+                    assertEquals(0.0, a[i, j], "Expected non-diagonal elements to be 0.0")
+            }
+        }
+    }
+
+    /**
+     * Tests the function 'mk.diagonal<Double>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalDoubleMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { it + 1.0 })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(i + 1.0, a[i, j], "Expected element at [$i:$j] to be ${i + 1}")
                 else
                     assertEquals(0.0, a[i, j], "Expected non-diagonal elements to be 0.0")
             }
@@ -965,6 +1097,28 @@ class Create2DArrayTests {
     }
 
     /**
+     * Tests the function 'mk.diagonal<ComplexFloat>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalComplexFloatMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { ComplexFloat(it + 1f, it + 1f) })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(ComplexFloat(i + 1f, i + 1f), a[i, j], "Expected element at [$i:$j] to be ${ComplexFloat(i + 1f, i + 1f)}")
+                else
+                    assertEquals(ComplexFloat.zero, a[i, j], "Expected non-diagonal elements to be ${ComplexFloat.zero}")
+            }
+        }
+    }
+
+    /**
      * Creates a two-dimensional array from a list of complex float lists
      * and checks if the array's list representation matches the input list.
      */
@@ -1089,6 +1243,28 @@ class Create2DArrayTests {
                         a[i, j],
                         "Expected non-diagonal elements to be ${ComplexDouble.zero}"
                     )
+            }
+        }
+    }
+
+    /**
+     * Tests the function 'mk.diagonal<ComplexDouble>(elements)' that creates an identity matrix of size elements.size x elements.size.
+     * The test asserts that:
+     * - The size of the resulting matrix matches elements.size x elements.size.
+     * - The diagonal elements of the matrix are as provided and the non-diagonal elements are 0.
+     */
+    @Test
+    fun createDiagonalComplexDoubleMatrix() {
+        val n = 7
+        val a = mk.diagonal(List(n) { ComplexDouble(it + 1.0, it + 1.0) })
+
+        assertEquals(n * n, a.size)
+        for (i in 0 until n) {
+            for (j in 0 until n) {
+                if (i == j)
+                    assertEquals(ComplexDouble(i + 1.0, i + 1.0), a[i, j], "Expected element at [$i:$j] to be ${ComplexDouble(i + 1.0, i + 1.0)}")
+                else
+                    assertEquals(ComplexDouble.zero, a[i, j], "Expected non-diagonal elements to be ${ComplexDouble.zero}")
             }
         }
     }

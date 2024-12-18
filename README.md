@@ -177,6 +177,13 @@ val e = mk.identity<Double>(3) // create an identity array of shape (3, 3)
 [0.0, 1.0, 0.0],
 [0.0, 0.0, 1.0]]
 */
+
+val diag = mk.diagonal(mk[2, 4, 8]) // create a diagonal array
+/*
+[[2, 0, 0],
+[0, 4, 0],
+[0, 0, 8]]
+ */
 ```
 
 #### Array properties

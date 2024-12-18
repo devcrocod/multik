@@ -204,6 +204,38 @@ public fun <T> Multik.identity(n: Int, dtype: DataType): D2Array<T> {
 }
 
 /**
+ * Returns a diagonal array.
+ *
+ * @param elements the elements along the main diagonal.
+ * @return [D2Array].
+ * @sample samples.NDArrayTest.diagonal
+ */
+public inline fun <reified T : Any> Multik.diagonal(elements: List<T>): D2Array<T> {
+    val dtype = DataType.ofKClass(T::class)
+    return diagonal(elements = elements, dtype = dtype)
+}
+
+/**
+ * Returns a diagonal array.
+ *
+ * Note: Generic type of elements must match [dtype].
+ *
+ * @param dtype array type.
+ * @param elements the elements on the main diagonal.
+ * @return [D2Array]
+ * @sample samples.NDArrayTest.diagonalWithDtype
+ */
+public fun <T> Multik.diagonal(elements: List<T>, dtype: DataType): D2Array<T> {
+    val n = elements.size
+    val shape = intArrayOf(n, n)
+    val ret = D2Array(initMemoryView<T>(n * n, dtype), shape = shape, dim = D2)
+    for (i in 0 until n) {
+        ret[i, i] = elements[i]
+    }
+    return ret
+}
+
+/**
  * Creates the 1-dimension array from [arg] of Number type.
  *
  * Example:
